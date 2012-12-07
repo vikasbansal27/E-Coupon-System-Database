@@ -17,8 +17,8 @@ create table ProductCategory
 create table User1
 	(UserID   			number(10)  	not null,
     MemberCardID  		number(10)  	not null UNIQUE,
-    UserName  			varchar2(20) 	not null UNIQUE,   --*how to define range of characters 5 to 20?
-	Password  			varchar2(20) 	not null,  --*how to define range of characters?
+    UserName  			varchar2(20) 	not null UNIQUE,   
+	Password  			varchar2(20) 	not null,  
     LastName  			varchar2(20) 	not null,
 	Middleinitial   	varchar2(5),
     FirstName      		varchar2(20) 	not null,
@@ -26,7 +26,7 @@ create table User1
     City           		varchar2(15) 	not null,
     State          		varchar2(10) 	not null,  
     ZipCode        		number(5)      	not null,
-	Email          		varchar2(50) 	not null UNIQUE,   --*how to define range of characters?
+	Email          		varchar2(50) 	not null UNIQUE,   
 	Phone          		number(10)     	not null UNIQUE,
     DateOfBirth    		date         	not null,
     CouponAmountLimited number(2) 		not null,
@@ -73,7 +73,7 @@ create table DollarDiscountCoupon
 	(CouponID  number(10)  not null,
     DollarOff  number(4,2) not null, 
     constraint DC_PK primary key (CouponID),
-    constraint DC_FK foreign key (CouponID) references Coupon(CouponID),  --*how to check whether it is less than the price?
+    constraint DC_FK foreign key (CouponID) references Coupon(CouponID),  
 	constraint DC_CK CHECK (DollarOff>0 AND DollarOff<99.99));  
 	
 create table Validate1
@@ -96,7 +96,7 @@ create table Load
 	
 create table GoldenUser
 	(UserID       number(10)  not null,
-    DiscountRate  number(2,1) not null,  --annual spent > 1000?
+    DiscountRate  number(2,1) not null,  
 	constraint G_PK primary key (UserID),
     constraint G_FK foreign key (UserID) references User1(UserID),
 	constraint G_CK CHECK (DiscountRate = 0.8));
